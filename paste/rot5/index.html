@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>rot5</title>
+	    <meta name="description" content="rot5">
+	    <link rel="stylesheet" href="https://doxbin.org/legacy/app.css?r=46">
+	    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	    <link href="/legacy/css/show.css?r=44" rel="stylesheet">
+	    <link href="https://doxbin.org/legacy/google-code-prettify/tomorrow-night.css" rel="stylesheet">
+	    <link href="https://doxbin.org/legacy/toastr/toastr.min.css" rel="stylesheet">
+    <script src="https://doxbin.org/legacy/custom.modernizr.js"></script>
+   <script src="https://doxbin.org/legacy/jquery.min.js"></script>
+   <link href="/files/doxbin.css?r=32" rel="stylesheet">
+		<style>
+	    select, option{
+        line-height: 1.2;
+        color: white;
+	        background: #282828;
+        border: 0;
+        border-radius: 2px;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        outline: none;
+	        padding: 7px 5px;
+	        width: 50%;
+	        /* margin-bottom: 10px; */
+	    }
+	    .right{
+	        text-align: right;
+	        width: 100%;
+	    }
+	    select, option{
+	        font-size: 100%;
+	    }
+	    input#paste-password:disabled{
+	        color: rgb(190, 190, 190);
+	    }
+	    pre a:hover{
+	        text-decoration: underline;
+	    }
+	    @font-face {
+	    font-family: 'Material Icons';
+	    font-style: normal;
+	    font-weight: 400;
+	    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+	    src: local('Material Icons'),
+	        local('MaterialIcons-Regular'),
+	        url(https://doxbin.org/MaterialIcons-Regular.woff2) format('woff2'),
+	        url(https://doxbin.org/MaterialIcons-Regular.woff) format('woff'),
+	        url(https://doxbin.org/MaterialIcons-Regular.ttf) format('truetype');
+	    }
+	    .material-icons {
+	  font-family: 'Material Icons';
+	  font-weight: normal;
+	  font-style: normal;
+	  font-size: 24px;  /* Preferred icon size */
+	  display: inline-block;
+	  line-height: 1;
+	  text-transform: none;
+	  letter-spacing: normal;
+	  word-wrap: normal;
+	  white-space: nowrap;
+	  direction: ltr;
+	 
+	  /* Support for all WebKit browsers. */
+	  -webkit-font-smoothing: antialiased;
+	  /* Support for Safari and Chrome. */
+	  text-rendering: optimizeLegibility;
+	 
+	  /* Support for Firefox. */
+	  -moz-osx-font-smoothing: grayscale;
+	 
+	  /* Support for IE. */
+	  font-feature-settings: 'liga';
+	}
+
+	    .like-dislike-paste a, .like-dislike-paste span{
+	        display: inline-block;
+	    }
+    .like-dislike-paste a span.material-icons, .like-dislike-paste span span.material-icons{
+        font-size: 17px;
+	        margin-right: 3px;
+	    }
+	    .like-dislike-paste a span.paste-likes, .like-dislike-paste a span.paste-dislikes{
+	        font-size: 13px;
+	    }
+	    .like-dislike-comment a, .like-dislike-comment span{
+	        display: inline-block;
+	    }
+	    .like-dislike-comment a span.material-icons, .like-dislike-comment span span.material-icons{
+	        font-size: 15px;
+	        margin-right: 2px;
+	    }
+	    .like-dislike-comment a span.comment-likes, .like-dislike-comment a span.comment-dislikes{
+	        font-size: 11px;
+	    }
+
+	    #like-paste, #dislike-paste, a.like-comment, a.dislike-comment{
+	        color: white;
+	    }
+	    #like-paste:hover, #dislike-paste:hover, .like-comment:hover, div.like-dislike-comment .dislike-comment:hover{
+	        color: rgb(161, 161, 161) !important;
+	    }
+	    a.button{
+	        font-size: 14px !important;
+	        text-transform: none !important;
+	    }
+	    </style>
+		<script>
+		var doxid = 194956;
+	    var cnum = 10;
+	    var banned = 0;
+	    var uName = "DoxDemon";
+	    var uAdmin = 0;
+	    var chc = 0;
+	// 
+	</script>
+	    </head>
+<body class="bin" style="overflow-x: hidden;">
+<div class="wrapper">
+<div class="table">
+	        
+	        
+	    </div>
+	    <div class="show-container" style="padding-left: 20px;">
+	<pre style="color: white; margin: 0;"> <!-- clickable links -->
+	
+                                                                                ⠀⠀⠀⠀⠀⠀⠀⢀⢆⣮⣎⣝⢨⡀⠈⠀⠀⢀⡀⢀⣘⣌⠌⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                                ⠀⠀⠀⠀⠀⠀⠀⠜⣼⣿⣿⣿⣿⣿⢞⢪⢪⣩⣾⣿⣿⣿⣿⠜⠌⠀⠀⢀⢈⢈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                              ⠀⠈⢤⢪⢘⢉⢪⡊⢄⠁⣿⣿⣿⢻⢻⡷⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⣁⠠⣚⣍⣮⣮⣎⢝⡊⠈⠀⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⢀⢒⣮⣿⣿⣿⣿⣿⣿⣎⠉⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⣀⣾⣿⣿⣿⣿⣿⣿⣿⢞⢆⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣾⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⣿⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⠰⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠌⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣠⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⡡⡹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠩⠁⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠀⠐⠂⢕⢱⠻⡷⢳⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⡝⠤⠒⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠀⠀⠀⠀⠀⢀⣈⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                            ⠀⠀⠀⠀⠀⠎⣰⣿⣿⣿⣿⣿⠓⠱⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠓⠱⣷⣿⣿⣿⣿⣿⣰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                            ⠀⠀⠀⠀⠀⠁⣲⣿⣿⣿⣿⣿⠈⠀⢀⣿⣿⣿⣿⡿⡳⣿⣿⣿⣿⢏⠀⢀⣼⣿⣿⣿⣿⣿⡰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                            ⠀⠀⠀⠀⠀⠰⠰⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠆⠀⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠀⠀⠀⠀⠀⠀⠐⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣮⣿⣿⣮⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢷⠴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⡳⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⡛⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                               ⠀⠈⠠⠀⠢⠢⠀⡂⡵⠱⠳⠳⠳⣳⣿⠑⡑⠑⠱⣳⣿⣿⣿⣿⣿⣿⡅⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                           ⠀⠀⠀⠀⣠⠀⣿⣍⣌⣌⣌⣾⣏⣌⣌⣌⢈⠰⠳⠑⣀⢌⡢⡤⣿⣿⣿⣿⣿⣿⣯⠼⢌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                              ⠀⠘⣸⣿⣿⣿⣿⣿⣿⣿⣿⢿⠙⣿⢈⣨⢏⠐⠙⣻⣿⣷⣿⣿⣿⣿⣿⣿⣿⢞⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                             ⠀⠀⠇⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠎⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                            ⠀⠀⠀⣡⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⢁⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                            ⠀⠀⠀⠀⣂⡳⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⡷⡷⠓⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                            ⠀⠀⠀⠀⠀⠡⠢⠢⠢⠂⠦⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠗⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                            ⠀                    ⠀⠀⠀⠀⠀⠎⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣮⡦⣦⣮⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                            ⠀                    ⠀⠀⠀⠀⠀⠏⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡝⡀⡐⣿⣰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀                                                            ⠀                    ⠀⠀⠀⠀⠏⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⢷⠳⠳⡷⠷⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                                                                                ⠀⠀⠀⠀⠀⠀⠰⢴⡳⡷⡷⡷⢳⡑⠄⠔⠙⠐⡻⡷⣿⡷⡷⢓⠶⠀⠐⠀⠁⠀⠀⠀⠀⠀⠀
+
+
+
+                             ⠀⠀⠀⠀⠀⠀⠀  ⠀     _     _      _     _      _     _      _     _      _     _      _     _      _     _   
+                             ⠀⠀⠀⠀⠀⠀  ⠀  ⠀  (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)  
+                             ⠀⠀⠀⠀⠀⠀  ⠀  ⠀   / ._. \      / ._. \      / ._. \      / ._. \      / ._. \      / ._. \      / ._. \   
+                             ⠀⠀⠀⠀⠀⠀  ⠀  ⠀ __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__  __\( Y )/__ 
+                             ⠀⠀⠀⠀⠀⠀  ⠀  ⠀(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)(_.-/'-'\-._)
+                             ⠀⠀⠀⠀⠀⠀  ⠀  ⠀   || W ||      || E ||      || L ||      || C ||      || O ||      || M ||      || E ||   
+                             ⠀⠀⠀⠀⠀  ⠀  ⠀⠀ _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._  _.' `-' '._ 
+                             ⠀⠀⠀⠀  ⠀  ⠀⠀⠀(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)(.-./`-'\.-.)
+                             ⠀⠀⠀⠀  ⠀  ⠀⠀⠀ `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-'  `-'     `-' ⠀⠀
+
+                                                            The best thing to know is, you're not safe on the internet nomatter whom you are.                            
+                                                                                                                                                                   
+                                  ╠─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╣   
+                                                                                      Format by: Moxy
+
+                                                                                Dox Illustrated by: Debit
+
+                                                                   ╔════════════════════════════════════════════════════════╗
+                                                                   ║ Table Of Contents                                      ║
+                                                                   ║ →     0x01 Personal Information                        ║
+                                                                   ║ →     0x02 Social Media Platforms                      ║                      
+                                                                   ║ →     0x03 Relatives info                              ║
+                                                                   ║ →     0x04 Credits                                     ║       
+                                                                   ╚════════════════════════════════════════════════════════╝
+
+                                                                                         ,:',:`,:'       HELP I'M ABOUT           
+                                                                                      __||_||_||_||__  / TO FUCKING SINK                            
+                                                                                 ____["""""""""""""""]____                          
+                                                                                 \ " '''''''''''''''''''' \                        
+                                                                           ~^~^~^~^~^^~^~^~^~^~^~^~^~~^~^~^^~~^~^              
+                                                                          ~^~^~^~^~^^~^~^~^~^~^~^~^~~^~^~^^~~^~^                
+                                                                           ~^~^~^~^~^^~^~^~^~^~^~^~^~~^~^~^^~~^~^ 
+
+                                  ╔───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╗
+
+                                                                                         Introduction
+                                  Rot5, otherwise known as Kaleb has a past history of vaulting / attempting to dox innocent females online. There is no reason
+                                  for this other than him being a weirdo. He is known for sending his dick pics to girls, being a weird male online. Generally
+                                  talking this guy is a fucking lame retard.
+
+                                      ╔───────────────────────────────────────────────────────────────────────────────────────────────────────────────╗  
+                                      -+-                                          0x01 [Personal Information]                                      -+-         
+                                      ╚───────────────────────────────────────────────────────────────────────────────────────────────────────────────╝ 
+
+
+
+
+                                                                                        Name - Kaleb Barry
+
+                                                                            Address - 501 Kinwood Dr, Milford, IN 46542
+
+                                                                                        Info - 6'0 165lbs 
+
+
+
+
+                                                                                            Pictures - 
+                                                 https://cdn.discordapp.com/attachments/1140547761507418123/1140555082119790592/Snapchat-1479331211.png
+                                                 https://cdn.discordapp.com/attachments/1021518275991056495/1036767764527976458/IMG_0455.jpg
+                                                 https://cdn.discordapp.com/attachments/998887557322526751/1002149825485213776/IMG_7701.png
+                                                 https://cdn.discordapp.com/attachments/998887557322526751/1003209852438466600/6AB0181C-AD95-4BF3-83A7-D8E32E75F167.jpg
+                                                 https://cdn.discordapp.com/attachments/998887557322526751/998896199920787486/IMG_7445.png
+                                                 https://cdn.discordapp.com/attachments/1140547761507418123/1140557929448214578/IMG_9817.png
+
+
+                                      ╔───────────────────────────────────────────────────────────────────────────────────────────────────────────────╗
+                                      -+-                                           0x02 [Social Media Platforms]                                   -+-
+                                      ╚───────────────────────────────────────────────────────────────────────────────────────────────────────────────╝
+                                                                                             Socials - 
+
+                                                      https://www.roblox.com/users/1952468/profile?friendshipSourceType=PlayerSearch#!/about
+                                                                          https://discord.com/users/747575055080489162
+                                                                              https://www.tiktok.com/@shklurb
+                                                                            https://www.instagram.com/shklurb/
+
+
+
+                                                                                                        a,  8a
+                                                                                                        `8, `8)                            ,adPPRg,
+                                                                                                         8)  ]8                        ,ad888888888b
+                                                                                                        ,8' ,8'                    ,gPPR888888888888
+                                                                                                       ,8' ,8'                 ,ad8""   `Y888888888P
+                                                                                                       8)  8)              ,ad8""        (8888888""
+                                                                                                       8,  8,          ,ad8""            d888""
+                                                                                                       `8, `8,     ,ad8""            ,ad8""
+                                                                                                        `8, `" ,ad8""            ,ad8""
+                                                                                                           ,gPPR8b           ,ad8""
+                                                                                                          dP:::::Yb      ,ad8""
+                                                                                                          8):::::(8  ,ad8""
+                                                                                                          Yb:;;;:d888""  Fucking
+                                                                                                          "8ggg8P"      Smoked Retard.
+
+                                      ╔───────────────────────────────────────────────────────────────────────────────────────────────────────────────╗
+                                      -+-                                           0x03 [Relatives info]                                            -+-
+                                      ╚───────────────────────────────────────────────────────────────────────────────────────────────────────────────╝
+                                               Father:
+
+
+                                               Name - Christopher Barry
+
+                                               DOB - 9/17/1983 (39yrs)
+
+                                               Phone # - (574) 304-0368
+
+                                               Landline - (574) 696-1128
+
+
+
+                                               Mother: 
+
+                                               Name - Janie Barry
+
+                                               Age - 30s
+
+                                               Phone # - (574) 658-3256 , (574) 696-1128
+
+
+
+                                               Grandpa:
+
+                                               Name - Florence G Bearry
+
+                                               Age - 60s
+
+                                               Phone # - (574) 658-3256 , (574) 658-4855
+
+
+
+
+                                     ╔───────────────────────────────────────────────────────────────────────────────────────────────────────────────╗
+                                     -+-                                           0x04 [Credits]                                                  -+-
+                                     ╚───────────────────────────────────────────────────────────────────────────────────────────────────────────────╝
+
+
+						To end it off, this guy is a total retard online / a creep. Next time you think about being a 
+						weirdo online, remember what may happen when you do it.
+							Credits: Debit. Anonymous person.
+
+
+
+
+
+                                                                                                                            
+                                                                                                                              Dad
+                                                                                                                ______
+                                                                                                   ╭━━━━━━━━━╮ / Yes? \
+                                                                                                   ┃━●━━══━━━┃ \______/    ______________________
+                                                                                                   ┃█████████┃ /          / Daddy I just got ran \
+                                                                                                   ┃█████████┃            \______________________/
+                                                                                                   ┃█████████┃  __________________________        \
+                                                                                                   ┃█████████┃ / You are a disappointment.\
+                                                                                                   ┃█████████┃ \__________________________/
+                                                                                                   ┃█████████┃ /
+                                                                                                   ┃█████████┃
+                                                                                                   ┃█████████┃ --------------------------------------
+                                                                                                   ┃━━━━○━━━━| |>   :(                         Send |
+                                                                                                   ╰━━━━━━━━━╯ --------------------------------------  
+
+
+						 .----------------.  .----------------.  .----------------. 
+						| .--------------. || .--------------. || .--------------. |
+						| |    ______    | || |    ______    | || |    ______    | |
+						| |   / ____ `.  | || |   / ____ `.  | || |   / ____ `.  | |
+						| |   `'  __) |  | || |   `'  __) |  | || |   `'  __) |  | |
+						| |   _  |__ '.  | || |   _  |__ '.  | || |   _  |__ '.  | |
+						| |  | \____) |  | || |  | \____) |  | || |  | \____) |  | |
+						| |   \______.'  | || |   \______.'  | || |   \______.'  | |
+						| |              | || |              | || |              | |
+						| '--------------' || '--------------' || '--------------' |
+ 						'----------------'  '----------------'  '----------------' 
+
