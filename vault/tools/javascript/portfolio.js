@@ -12,7 +12,7 @@ $(document).ready(() => {
   const links = [
     {
       name: ' | + | ',
-      link: 'https://debit.rip/vault',
+      link: 'https://kem.rip/vault',
     },
     {
       name: ' | insta | ',
@@ -139,7 +139,7 @@ $.getJSON(ipgeolocation, (data) => {
 
       clearCursor();
 
-      writeLine([`<i style='color: #F62459'>debit $$$</i>`], 120, 500, () => {
+      writeLine([`<i style='color: #F62459'>kem $$$</i>`], 120, 500, () => {
         timeouts.push(
           setTimeout(() => {
             if (app.skippedIntro) return;

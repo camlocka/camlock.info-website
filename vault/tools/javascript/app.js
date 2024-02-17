@@ -12,7 +12,7 @@ class _app {
   backgroundToggler = false;
   shouldIgnoreVideo = false;
   effects = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello'];
-  brandDescription = ['hello', 'if yk me, yk me.', 'learning py and js', 'debit / auto / 14 / 23s / network', 'If you would like to talk message me on telegram', ''];
+  brandDescription = ['hello', 'if yk me, yk me.', 'learning py and js', 'kem / auto / 14 / 23s / network', 'If you would like to talk message me on telegram', ''];
 
   titleChanger = (text, delay) => {
     if (!text) return;
